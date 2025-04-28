@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"> <!-- AOS Animation Library -->
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+        position: relative;
+      }
+
+      .card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease-in-out;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .card:hover {
+        transform: translateY(-10px) scale(1.01);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      h2, h3 {
+        font-weight: 800;
+        color: #0d6efd;
+      }
+
+      p, li {
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      .section-title {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+      }
+
+      ul, ol {
+        padding-left: 1.5rem;
+      }
+
+      .btn-custom {
+        background: #0d6efd;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .btn-custom:hover {
+        background: #084298;
+        transform: scale(1.05);
+      }
+
+      /* Light floating bubbles background */
+      .bubble {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .bubble:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+      .bubble:nth-child(2) { top: 40%; left: 20%; animation-delay: 2s; }
+      .bubble:nth-child(3) { top: 60%; left: 70%; animation-delay: 4s; }
+      .bubble:nth-child(4) { top: 80%; left: 50%; animation-delay: 6s; }
+      .bubble:nth-child(5) { top: 30%; left: 80%; animation-delay: 8s; }
+
+      @keyframes float {
+        0% { transform: translateY(0) scale(1);}
+        50% { transform: translateY(-50px) scale(1.2);}
+        100% { transform: translateY(0) scale(1);}
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Floating bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="container py-5">
+      <div class="card p-5" data-aos="fade-up" data-aos-duration="1200">
+        <h2 class="text-center mb-4" data-aos="zoom-in" data-aos-delay="300">Building a Symptom-Based Disease Diagnosis Web App with Flask and Machine Learning</h2>
+
+        <p data-aos="fade-right">In the age of technology and information, access to accurate and timely healthcare is more critical than ever. With the increasing importance of remote healthcare solutions, we embarked on a journey to develop a symptom-based disease diagnosis web application. Leveraging Flask for the backend and a Decision Tree Classifier model, we created a user-friendly platform that can help users identify potential illnesses based on their reported symptoms.</p>
+
+        <h3 class="section-title" data-aos="fade-left">The Problem</h3>
+        <p data-aos="fade-right">The project began with recognizing a common issue: people often experience symptoms and want quick answers about their health concerns. It can be challenging to differentiate between various diseases, especially when symptoms overlap. Our goal was to provide a convenient solution for users to input their symptoms and receive potential diagnoses.</p>
+
+        <h3 class="section-title" data-aos="fade-left">The Solution</h3>
+        <p data-aos="fade-up">We developed a web app that allows users to enter a list of symptoms they are experiencing. The app then uses a pre-trained Decision Tree Classifier model to predict the most likely disease based on the provided symptoms. Here's how it works:</p>
+
+        <ol data-aos="fade-up" data-aos-delay="200">
+          <li><strong>Symptom Input:</strong> Users enter their symptoms through a user-friendly interface.</li>
+          <li><strong>Machine Learning Model:</strong> We trained a Decision Tree Classifier using a dataset containing symptoms and corresponding diseases.</li>
+          <li><strong>Prediction:</strong> The app uses the model to predict the most likely disease.</li>
+          <li><strong>Additional Information:</strong> Comprehensive info like disease description, precautions, medications, diet advice, and workout tips.</li>
+        </ol>
+
+        <h3 class="section-title" data-aos="fade-left">Key Features</h3>
+        <ul class="list-unstyled" data-aos="fade-up">
+          <li class="mb-2"><strong>User-Friendly Interface:</strong> Intuitive and easy to navigate.</li>
+          <li class="mb-2"><strong>Accurate Predictions:</strong> Reliable results powered by machine learning.</li>
+          <li class="mb-2"><strong>Comprehensive Information:</strong> All necessary advice and descriptions included.</li>
+          <li class="mb-2"><strong>Educational Content:</strong> Blog posts on important health topics.</li>
+        </ul>
+
+        <h3 class="section-title" data-aos="fade-left">Conclusion</h3>
+        <p data-aos="fade-up">Our Symptom-Based Disease Diagnosis Web App brings the power of machine learning and healthcare information to the fingertips of users. By combining technology and healthcare, we aim to make healthcare more accessible and user-centric.</p>
+        <p data-aos="fade-up" data-aos-delay="200">In an era where remote healthcare solutions are gaining prominence, this project represents a significant step forward in providing accessible and reliable healthcare information to the masses.</p>
+
+        <div class="text-center mt-4" data-aos="zoom-in">
+          <button class="btn btn-custom">Learn More</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

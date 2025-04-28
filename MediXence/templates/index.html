@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MediXence - AI Health Center</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&family=Exo+2:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Animated Sci-Fi Background */
+    body {
+      background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+      background-size: 600% 600%;
+      animation: gradientShift 20s ease infinite;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Additional floating particles */
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #ffcbe11a;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 2rem;
+      color: #00f5d4;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    .navbar-nav .nav-link {
+      color: #ffffff;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      transition: all 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+      color: #00f5d4;
+      text-shadow: 0 0 10px #00f5d4, 0 0 15px #00f5d4;
+      transform: scale(1.05);
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00f5d4, 0 0 10px #00f5d4; }
+      to { text-shadow: 0 0 20px #00f5d4, 0 0 40px #00f5d4; }
+    }
+
+    .myimg {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #00f5d4;
+      object-fit: cover;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 40px;
+      box-shadow: 0 8px 30px rgba(0, 255, 255, 0.2);
+      transition: all 0.4s ease;
+      z-index: 1;
+      position: relative;
+    }
+
+    .form-container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 40px rgba(0, 255, 255, 0.4);
+    }
+
+    input[type="text"] {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    input[type="text"]:focus {
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 10px #00f5d4;
+    }
+
+    #startSpeechRecognition {
+      margin-top: 15px;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
+      color: #000;
+      font-weight: 700;
+      border-radius: 25px;
+      padding: 10px 20px;
+      border: none;
+      transition: 0.4s;
+    }
+
+    #startSpeechRecognition:hover {
+      background: linear-gradient(90deg, #92fe9d, #00c9ff);
+      transform: scale(1.05);
+    }
+
+    #transcription {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #00f5d4;
+      border-bottom: 2px solid #00f5d4;
+      padding: 5px;
+      min-height: 40px;
+      text-align: center;
+    }
+
+    .btn-danger {
+      background: linear-gradient(to right, #fc466b, #3f5efb);
+      border: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: 0.4s;
+    }
+
+    .btn-danger:hover {
+      background: linear-gradient(to right, #3f5efb, #fc466b);
+      transform: scale(1.05);
+    }
+
+    .toggle-button {
+      margin: 10px 8px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(90deg, #00dbde, #fc00ff);
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .toggle-button:hover {
+      background: linear-gradient(90deg, #fc00ff, #00dbde);
+      transform: scale(1.1);
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #00c9ff, #92fe9d);
+      color: #000;
+    }
+
+    .modal-body {
+      background: #0f2027;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{{ url_for('static', filename='img.png') }}" class="myimg me-2">
+      MediXence
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="/developer">Developer</a></li>
+        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Form -->
+<h1>MediXence - AI Health Assistant</h1>
+
+<div class="container form-container">
+  <form action="/predict" method="post">
+    <div class="mb-3">
+      <label for="symptoms" class="form-label">Enter Your Symptoms:</label>
+      <input type="text" class="form-control" id="symptoms" name="symptoms" placeholder="Type symptoms like headache, fever, etc.">
+    </div>
+
+    <button type="button" id="startSpeechRecognition">🎤 Start Voice Input</button>
+    <div id="transcription"></div>
+
+    {% if message %}
+      <div class="alert alert-info my-3">{{ message }}</div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-danger btn-lg w-100 mt-4">Predict Diagnosis</button>
+  </form>
+</div>
+
+{% if predicted_disease %}
+<!-- Results Section -->
+<h1 class="my-4">AI Diagnosis Result</h1>
+
+<div class="text-center">
+  <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal">Disease</button>
+  <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal">Description</button>
+  <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal">Precautions</button>
+  <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal">Medications</button>
+  <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal">Workouts</button>
+  <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal">Diets</button>
+</div>
+{% endif %}
+
+<!-- Modals -->
+{% for modal_id, modal_title, modal_content in [
+  ('diseaseModal', 'Predicted Disease', predicted_disease),
+  ('descriptionModal', 'Description', dis_des),
+  ('precautionModal', 'Precautions', my_precautions),
+  ('medicationsModal', 'Medications', medications),
+  ('workoutsModal', 'Workouts', workout),
+  ('dietsModal', 'Diets', my_diet)
+] %}
+<div class="modal fade" id="{{ modal_id }}" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ modal_title }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        {% if modal_id in ['precautionModal', 'medicationsModal', 'workoutsModal', 'dietsModal'] %}
+          <ul>
+            {% for item in modal_content %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>{{ modal_content }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- Scripts -->
+<script>
+  const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+  const transcriptionDiv = document.getElementById('transcription');
+
+  startSpeechRecognitionButton.addEventListener('click', () => {
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+
+    recognition.onresult = function (event) {
+      const result = event.results[0][0].transcript;
+      transcriptionDiv.textContent = result;
+      document.getElementById('symptoms').value = result;
+    };
+
+    recognition.start();
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
