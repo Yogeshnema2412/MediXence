@@ -89,3 +89,9 @@ Personalized-Medical-Recommendation-System/
 
 **GitHub*: https://github.com/Yogeshnema2412/MediXence
 
+## 📷 Demo
+
+
+![Screenshot 2025-04-28 233600](https://github.com/user-attachments/assets/61efb2fe-81f7-44ac-b43f-9d917e683583)
+
+
